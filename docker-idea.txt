@@ -1,0 +1,16 @@
+Convert ghost-alpine dockerfile
+
+pass in blog-url as env variable, sed/substitute config.js to replace localhost
+pass in url to git repo as env variable
+
+theme at /var/lib/ghost/content/themes/apparition
+clone and extract the theme files, copy to relevant dirs
+or use onbuild copy
+
+
+database at /var/lib/ghost/content/data
+
+
+docker run oddsockmachine:ghost -e URL=blog.oddsockmachine.com -e PORT=2368 -e THEME=github.com/oddsockmachine/spectre_theme.git -v data_volume:/var/lib/ghost/content/data
+
+docker compose with separate worker to backup data volume to private git repo
